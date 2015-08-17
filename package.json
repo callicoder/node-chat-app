@@ -12,6 +12,9 @@
   ],
   "author": "callicoder",
   "license": "ISC",
+  "engines": {
+    "node": "0.12.2"
+  },
   "dependencies": {
     "async": "^1.4.1",
     "body-parser": "^1.13.2",
