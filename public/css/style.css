@@ -1,0 +1,318 @@
+/*
+	Index Page
+*/
+
+body {
+	display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+/*
+	Home Page
+*/
+
+#main {
+    flex: 1 0 auto;
+}
+
+#header {
+	position: fixed;
+  	width: 100%;
+  	left: 0;
+  	top: 0;
+  	z-index: 10;
+  	height: 65px;
+}
+
+#main {
+	padding-top: 65px;
+}
+
+#main, #footer {
+	padding-left: 250px; 
+}
+
+@media only screen and (max-width: 992px) { 
+	#main, #footer { 
+		padding-left: 0px; 
+	} 
+}
+
+.page-footer ul li{
+	clear: both;
+}
+
+.page-footer ul li i {
+	font-size: 20px;
+}
+
+.input-field label {
+	left: 0;
+}
+
+.input-field.col label {
+	left: 0.75rem;
+}
+
+
+.page-footer p {
+	font-size: 16px;
+
+}
+
+/*
+	Header
+*/
+
+.top-nav {
+	height: 65px;
+}
+
+ul.side-nav.fixed { 
+	top: 64px; 
+}
+
+ul.side-nav.fixed li { 
+	line-height: 44px; 
+}
+
+ul.side-nav.fixed a { 
+	line-height: 44px; 
+	height: 44px; 
+	padding-right: 0px !Important;
+}
+
+ul.side-nav.fixed { 
+	overflow: hidden; 
+	outline: none; 
+	padding-bottom: 125px; 
+}
+
+ul.side-nav.fixed ul.collapsible-accordion { 
+	background-color: #FFF; 
+}
+
+.top-nav .nav-wrapper .page-title { 
+	font-size: 24px; 
+}
+
+.nav-wrapper .top-nav-actions a { 
+	margin-right: 10px; 
+}
+
+.nav-wrapper .top-nav-actions a:last-child { 
+	margin-right: 0px; 
+}
+
+.nav-wrapper .top-nav-actions i { 
+	display: inline-block; 
+}
+
+.nav-wrapper ul li a {
+	position: relative;
+}
+
+.nav-wrapper ul li a span {
+	position: absolute;
+  	line-height: 12px;
+  	font-size: 12px;
+  	background-color: rgb(244, 67, 54);
+  	padding: 3px 6px;
+  	top: 8px;
+  	right: 6px;
+}
+
+.top-nav .header-container { 
+	padding-left: 28px; 
+	padding-right: 25px; 
+}
+
+ul.side-nav.fixed li.logo { 
+	text-align: center; 
+	padding-top: 25px; 
+	margin-bottom: 16px; 
+	border-bottom: 1px solid #ddd; 
+}
+
+ul.side-nav.fixed li.logo:hover { 
+	background-color: transparent; 
+}
+
+ul.side-nav.fixed li.logo {
+  background-image: url(../images/profileBg.jpg);
+  max-width: 100%;
+  height: auto;
+  background-position: center;
+}
+
+#logo-container {
+	display: block;
+	text-align: left;
+	height: 100px;
+	line-height: 1.5;
+	padding: 0 15px;
+}
+
+#logo-container img {
+	max-height: 56px;
+}
+
+a.button-collapse.top-nav { 
+	position: absolute; 
+	text-align: center; 
+	height: 48px; 
+	width: 48px; 
+	left: 0; 
+	top: 0; 
+	float: none; 
+	margin-left: 1.5rem; 
+	color: #fff; 
+	font-size: 32px; 
+	z-index: 2; 
+}
+
+ul.side-nav.fixed ul.collapsible-accordion a.collapsible-header:after { 
+	speak: none; 
+	display: inline-block; 
+	font-family: "Material-Design-Icons"; 
+	font-style: normal; 
+	font-weight: normal; 
+	font-variant: normal; 
+	text-rendering: auto; 
+	content: "\e7c1"; 
+	float:right; 
+	font-size: 20px; 
+}
+
+ul.side-nav.fixed ul.collapsible-accordion a.collapsible-header.active:after { 
+	speak: none; 
+	display: inline-block; 
+	font-family: "Material-Design-Icons"; 
+	font-style: normal; 
+	font-weight: normal; 
+	font-variant: normal; 
+	text-rendering: auto; 
+	content: "\e7c4"; 
+	float:right; 
+	font-size: 20px; 
+}
+
+ul.side-nav.fixed li a span { 
+	font-size: 17px; 
+	margin-right: 9px; 
+}
+
+ul.side-nav.fixed .collapsible-body li a { 
+	margin: 0 1rem 0 2.8rem; 
+}
+
+.profile-menu {
+	max-height: 0;
+	overflow: hidden;
+	-webkit-transition: max-height 0.3s;
+	-moz-transition: max-height 0.3s;
+	transition: max-height 0.3s;
+}
+
+.profile-menu.open {
+	max-height: 200px;
+	border-bottom: 1px solid #D0D1CB;
+}
+
+.profile-menu:hover {
+	background-color: #fff !Important;
+}
+
+.profile-toggle a {
+	height: 38px !Important;
+	line-height: 38px !Important;
+	background-color: rgba(0, 0, 0, 0.37);
+	margin-left: -30px;
+	margin-right: -30px;
+	padding-left: 32px !Important;
+}
+
+.profile-toggle a:after {
+	speak: none; 
+	display: inline-block; 
+	font-family: "Material-Design-Icons"; 
+	font-style: normal; 
+	font-weight: normal; 
+	font-variant: normal; 
+	text-rendering: auto; 
+	float: right;
+	content: "\e8a3";	
+	padding-right: 15px;
+	font-size: 25px;
+}
+
+.profile-toggle a.open:after {
+	speak: none; 
+	display: inline-block; 
+	font-family: "Material-Design-Icons"; 
+	font-style: normal; 
+	font-weight: normal; 
+	font-variant: normal; 
+	text-rendering: auto; 
+	float: right;
+	content: "\e8a4";	
+	padding-right: 15px;
+	font-size: 25px;
+}
+
+/*
+	Common
+*/
+
+.content-header {
+	margin-bottom: 15px;
+}
+
+.content-title { 
+	font-size: 1.5rem; 
+	margin-bottom: 2px;
+}
+
+
+/*
+	Login/Register
+*/
+
+.card.login-content, .card.register-content {
+	max-width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 35px 55px 35px;
+	overflow: visible;
+}
+
+.card.login-content i.prefix, .card.register-content i.prefix  {
+	color: #555555;
+}
+
+body.login-content, body.register-content {
+	padding-top: 140px;
+}
+
+body.login-content:before, body.register-content:before {
+	height: 50%;
+  	width: 100%;
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	background: #00bcd4;
+  	content: "";
+  	z-index: 0;
+}
+
+.login-navigation , .register-navigation {
+	text-align: center;
+	color: #445544;
+}
+
+@media(max-width: 400px) {
+	.card.login-content, .card.register-content {
+		padding: 15px;
+	}
+}

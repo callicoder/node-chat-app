@@ -1,0 +1,34 @@
+      <nav class="top-nav teal lighten-2">
+          <div class="header-container">
+              <div class="nav-wrapper">
+                  <a class="page-title hide-on-med-and-down left">
+                    Material Admin
+                  </a>
+                  <ul class="right">
+                    <li><a href=""><i class="mdi-action-search"></i></a></li>
+                    <li><a href=""><i class="mdi-communication-live-help"></i></a></li>
+                  </ul>
+              </div>
+          </div>
+      </nav> 
+      <div class="container">
+            <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only" material-side-nav edge="left">
+              <i class="mdi-navigation-menu"></i>
+            </a>
+      </div>
+      <ul id="nav-mobile" class="side-nav fixed" material-nice-scroll>
+        <li class="logo">
+            <div id="logo-container">
+              <img src="images/profile.jpg" alt="" class="circle responsive-img">
+              <div class="profile-toggle">
+                <a href="" profile-toggle class="white-text open">{{user}}</a>
+              </div> 
+            </div>
+        </li> 
+        <li class="profile-menu no-padding open">
+            <ul>
+                <li><a ui-sref=".profile"><span class="mdi-social-person teal-text text-darken-2"></span>View Profile</a></li>
+                <li><a href="/auth/signout"><span class="mdi-action-settings-power purple-text text-darken-2"></span>Logout</a></li>
+            </ul>
+        </li>              
+      </ul> 

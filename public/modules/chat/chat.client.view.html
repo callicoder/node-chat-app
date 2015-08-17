@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <div class="content-title">
+            
+      </div>
+      <div class="content">
+          <div class="card">
+              <div class="card-content">
+                  <span class="card-title grey-text text-darken-4">Chat with other users</span>
+                  <ul id="chat" class="collection">
+                      <li class="collection-item avatar" ng-repeat="message in messages track by $index">
+                          <i class="circle purple lighten-3" style="font-style:normal">{{message.username.slice(0,1) | uppercase}}</i>
+                          <span class="title">{{message.username | uppercase}}</span>
+                          <p>{{message.text}}</p>
+                          <span style="float: right;">{{message.created | date: "dd-MM-yyyy 'at' h:mma"}}</span>
+                      </li>
+                      <li class="collection-item">
+                          <form name="chat-form" id="chat-form" ng-submit="sendMessage()">
+                              <div class="input-field">
+                                <input id="message" type="text" ng-model="messageText" autocomplete="off">
+                                <label for="message">Message</label>
+                              </div>
+                          </form>
+                      </li>
+                  </ul>  
+              </div>
+          </div> 
+      </div>
+    </div>
+  </div>
+</div>
