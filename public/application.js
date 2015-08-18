@@ -1,6 +1,5 @@
 'use strict';
 
 angular.module('materialApp', [
-    'ui.router', 
-    'ngAnimate'
+    'ui.router'
 ]);
