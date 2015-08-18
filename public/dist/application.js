@@ -1,8 +1,7 @@
 'use strict';
 
 angular.module('materialApp', [
-    'ui.router', 
-    'ngAnimate'
+    'ui.router'
 ]);
 
 'use strict';
@@ -11,7 +10,7 @@ angular.module('materialApp')
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
     function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/login');    
 
     $stateProvider
     .state('welcome', {
@@ -40,6 +39,7 @@ angular.module('materialApp')
         controller: 'homeController'
     })
     .state('home.chat', {
+        url: '/chat',
         templateUrl: 'modules/chat/chat.client.view.html',
         controller: 'chatController'
     });    
@@ -47,7 +47,7 @@ angular.module('materialApp')
 
 
 angular.module('materialApp')
-.run(['$rootScope', function($rootScope) {
+.run(['$rootScope', 'security', '$state', function($rootScope, security, $state) {
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
         if(toState.data && toState.data.contentClass) {
@@ -63,7 +63,7 @@ angular.module('materialApp')
 angular.module('materialApp')
 .controller('chatController', ['$scope', 'Socket', 'security', function($scope, Socket, security){
 	$scope.messages = [];
-
+	$scope.numUsers = 0;
 	$scope.sendMessage = function() {
 		console.log($scope.messageText);
 		var message = {
@@ -75,6 +75,10 @@ angular.module('materialApp')
 
 	Socket.on('chatMessage', function(msg){
 		$scope.messages.push(msg);
+	});
+
+	Socket.on('analytics', function(data){
+		$scope.numUsers = data.numUsers;
 	});
 
 	$scope.$on('$destroy', function() {

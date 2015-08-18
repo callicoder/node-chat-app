@@ -50,7 +50,8 @@ module.exports = {
 				'public/lib/nicescroll/dist/jquery.nicescroll.min.js',
 				'public/lib/angular/angular.min.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
-				'public/lib/materialize/dist/js/materialize.min.js'
+				'public/lib/materialize/dist/js/materialize.min.js',
+				'public/lib/cryptojslib/rollups/aes.js'
 			]
 		},
 		css: [

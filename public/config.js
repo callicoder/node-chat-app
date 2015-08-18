@@ -29,8 +29,7 @@ angular.module('materialApp')
     })
     .state('home', {
         abstract: true,
-        templateUrl: 'modules/home/home.client.view.html',
-        controller: 'homeController'
+        templateUrl: 'modules/home/home.client.view.html'
     })
     .state('home.chat', {
         url: '/chat',
