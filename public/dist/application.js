@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('materialApp', [
+angular.module('chatApp', [
     'ui.router'
 ]);
 
 'use strict';
 
-angular.module('materialApp')
+angular.module('chatApp')
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
     function($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -15,7 +15,7 @@ angular.module('materialApp')
     $stateProvider
     .state('welcome', {
         abstract: true,
-        templateUrl: 'modules/common/welcome.client.view.html',        
+        templateUrl: 'modules/common/welcome.client.view.html'     
     })
     .state('welcome.login', {
         url: '/login',
@@ -35,8 +35,7 @@ angular.module('materialApp')
     })
     .state('home', {
         abstract: true,
-        templateUrl: 'modules/home/home.client.view.html',
-        controller: 'homeController'
+        templateUrl: 'modules/home/home.client.view.html'
     })
     .state('home.chat', {
         url: '/chat',
@@ -46,8 +45,8 @@ angular.module('materialApp')
 }]);
 
 
-angular.module('materialApp')
-.run(['$rootScope', 'security', '$state', function($rootScope, security, $state) {
+angular.module('chatApp')
+.run(['$rootScope', 'security', '$location', function($rootScope, security, $location) {
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
         if(toState.data && toState.data.contentClass) {
@@ -60,10 +59,13 @@ angular.module('materialApp')
 
 'use strict';
 
-angular.module('materialApp')
-.controller('chatController', ['$scope', 'Socket', 'security', function($scope, Socket, security){
+angular.module('chatApp')
+.controller('chatController', ['$scope', 'Socket', 'security', '$state', function($scope, Socket, security, $state){
+	if(!security.currentUser) {
+		$state.go('welcome.login');
+	}
+
 	$scope.messages = [];
-	$scope.numUsers = 0;
 	$scope.sendMessage = function() {
 		console.log($scope.messageText);
 		var message = {
@@ -87,16 +89,13 @@ angular.module('materialApp')
 }]);
 
 'use strict';
-angular.module('materialApp')
+angular.module('chatApp')
 .factory('Socket', ['$timeout', 'security', '$state', function($timeout, security, $state){
-
-    console.log(security.currentUser);
 
 	if(security.currentUser) {
 		this.socket = io();
 	} else {
-        console.log(security.currentUser);
-		$state.go('login');
+        $state.go('welcome.login');
 	}
 
 	// Wrap the Socket.io 'on' method
@@ -128,7 +127,7 @@ angular.module('materialApp')
 }]);
 
 'use strict';
-angular.module('materialApp')
+angular.module('chatApp')
 .controller('headerController', ['$scope', 'security', function($scope, security){
     $scope.user = security.currentUser.username;
 
@@ -257,23 +256,22 @@ directive('materialFileInput', function(){
 }]);
 
 'use strict';
-angular.module('materialApp')
-.controller('homeController', ['$scope', function($scope){
 
-}]);
-
-'use strict';
-
-angular.module('materialApp')
+angular.module('chatApp')
 .controller('loginController', ['$scope', 'security', '$state', function($scope, security, $state){
+	if(security.currentUser) {
+		$state.go('home.chat');
+	}
+
 	$scope.user = {};
 
-	$scope.login = function() {		
+	$scope.login = function() {
+		var passwordHash = CryptoJS.MD5($scope.user.password).toString();
+		$scope.user.password = passwordHash;
 		security.login($scope.user)
 		.success(function(data){
 			console.log(data);
-			$state.go('home.chat');
-			Materialize.toast('Welcome to MtaerialAdmin ', 4000); 
+			$state.go('home.chat'); 
 		}).error(function(err){
 			console.log(err);
 			Materialize.toast('Wrong Credentials', 4000);
@@ -282,15 +280,19 @@ angular.module('materialApp')
 }]);
 
 'use strict';
-angular.module('materialApp')
+angular.module('chatApp')
 .controller('registerController', ['$scope', 'security', '$state', function($scope, security, $state){
+	if(security.currentUser) {
+		$state.go('home.chat');
+	}
 	$scope.user = {};
 
 	$scope.register = function() {
+		var passwordHash = CryptoJS.MD5($scope.user.password).toString();		
+		$scope.user.password = passwordHash;
 		security.register($scope.user)
 		.success(function(data){
 			console.log(data);
-			Materialize.toast('Welcome to MtaerialAdmin ', 4000); 
 			$state.go('home.chat');
 		}).error(function(err){
 			console.log(err);
@@ -301,7 +303,7 @@ angular.module('materialApp')
 }]);
 
 'use strict';
-angular.module('materialApp')
+angular.module('chatApp')
 .factory('security', ['$http', '$window', function($http, $window) {
 	var service = {
 		currentUser: $window.user,
