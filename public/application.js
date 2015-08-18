@@ -1,5 +1,5 @@
 'use strict';
 
-angular.module('materialApp', [
+angular.module('chatApp', [
     'ui.router'
 ]);

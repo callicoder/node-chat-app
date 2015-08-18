@@ -1,9 +1,11 @@
 'use strict';
-angular.module('materialApp')
+angular.module('chatApp')
 .controller('registerController', ['$scope', 'security', '$state', function($scope, security, $state){
 	$scope.user = {};
 
 	$scope.register = function() {
+		var passwordHash = CryptoJS.MD5($scope.user.password);		
+		$scope.user.password = passwordHash;
 		security.register($scope.user)
 		.success(function(data){
 			console.log(data);

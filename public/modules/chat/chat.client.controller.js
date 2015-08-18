@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('materialApp')
+angular.module('chatApp')
 .controller('chatController', ['$scope', 'Socket', 'security', function($scope, Socket, security){
 	$scope.messages = [];
 	$scope.numUsers = 0;

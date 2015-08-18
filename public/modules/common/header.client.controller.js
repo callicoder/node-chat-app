@@ -1,5 +1,5 @@
 'use strict';
-angular.module('materialApp')
+angular.module('chatApp')
 .controller('headerController', ['$scope', 'security', function($scope, security){
     $scope.user = security.currentUser.username;
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('materialApp')
+angular.module('chatApp')
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
     function($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -39,7 +39,7 @@ angular.module('materialApp')
 }]);
 
 
-angular.module('materialApp')
+angular.module('chatApp')
 .run(['$rootScope', 'security', '$state', function($rootScope, security, $state) {
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {

@@ -24,7 +24,8 @@
 		"$": true,
 		"io": true,
 		"Materialize": true,
-		"unescape": true
+		"unescape": true,
+		"CryptoJS": true
 	},
 	"predef": [ // Extra globals.
 		"define",

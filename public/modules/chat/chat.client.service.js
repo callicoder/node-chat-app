@@ -1,5 +1,5 @@
 'use strict';
-angular.module('materialApp')
+angular.module('chatApp')
 .factory('Socket', ['$timeout', 'security', '$state', function($timeout, security, $state){
 
     console.log(security.currentUser);

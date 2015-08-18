@@ -28,7 +28,7 @@ module.exports = {
 				'public/lib/angular/angular.min.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.min.js',
 				'public/lib/materialize/dist/js/materialize.min.js',
-				'public/lib/cryptojslib/rollups/aes.js'
+				'public/lib/cryptojslib/rollups/md5.js'
 			]
 		},
 		css: 'public/dist/application.min.css',

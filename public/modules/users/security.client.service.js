@@ -1,5 +1,5 @@
 'use strict';
-angular.module('materialApp')
+angular.module('chatApp')
 .factory('security', ['$http', '$window', function($http, $window) {
 	var service = {
 		currentUser: $window.user,
