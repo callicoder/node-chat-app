@@ -13,11 +13,7 @@ angular.module('chatApp')
     $urlRouterProvider.otherwise('/login');    
 
     $stateProvider
-    .state('welcome', {
-        abstract: true,
-        templateUrl: 'modules/common/welcome.client.view.html'     
-    })
-    .state('welcome.login', {
+    .state('login', {
         url: '/login',
         templateUrl: 'modules/users/login.client.view.html',
         controller: 'loginController',
@@ -25,7 +21,7 @@ angular.module('chatApp')
             contentClass: 'login-content'
         }
     })
-    .state('welcome.register', {
+    .state('register', {
         url: '/register',
         templateUrl: 'modules/users/register.client.view.html',
         controller: 'registerController',
@@ -62,7 +58,7 @@ angular.module('chatApp')
 angular.module('chatApp')
 .controller('chatController', ['$scope', 'Socket', 'security', '$state', function($scope, Socket, security, $state){
 	if(!security.currentUser) {
-		$state.go('welcome.login');
+		$state.go('login');
 	}
 
 	$scope.messages = [];
@@ -95,7 +91,7 @@ angular.module('chatApp')
 	if(security.currentUser) {
 		this.socket = io();
 	} else {
-        $state.go('welcome.login');
+        $state.go('login');
 	}
 
 	// Wrap the Socket.io 'on' method
@@ -259,10 +255,6 @@ directive('materialFileInput', function(){
 
 angular.module('chatApp')
 .controller('loginController', ['$scope', 'security', '$state', function($scope, security, $state){
-	if(security.currentUser) {
-		$state.go('home.chat');
-	}
-
 	$scope.user = {};
 
 	$scope.login = function() {
@@ -282,9 +274,6 @@ angular.module('chatApp')
 'use strict';
 angular.module('chatApp')
 .controller('registerController', ['$scope', 'security', '$state', function($scope, security, $state){
-	if(security.currentUser) {
-		$state.go('home.chat');
-	}
 	$scope.user = {};
 
 	$scope.register = function() {
