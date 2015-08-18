@@ -5,7 +5,8 @@ angular.module('materialApp')
     function($stateProvider, $urlRouterProvider, $locationProvider) {
 
     $urlRouterProvider.otherwise('/login');
-
+    $urlRouterProvider.when('/home', '/home/chat');
+    
     $stateProvider
     .state('welcome', {
         abstract: true,
@@ -33,6 +34,7 @@ angular.module('materialApp')
         controller: 'homeController'
     })
     .state('home.chat', {
+        url: '/home/chat'
         templateUrl: 'modules/chat/chat.client.view.html',
         controller: 'chatController'
     });    
