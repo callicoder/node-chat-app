@@ -1,9 +1,12 @@
 'use strict';
 
 angular.module('chatApp')
-.controller('chatController', ['$scope', 'Socket', 'security', function($scope, Socket, security){
+.controller('chatController', ['$scope', 'Socket', 'security', '$state', function($scope, Socket, security, $state){
+	if(!security.currentUser) {
+		$state.go('welcome.login');
+	}
+
 	$scope.messages = [];
-	$scope.numUsers = 0;
 	$scope.sendMessage = function() {
 		console.log($scope.messageText);
 		var message = {

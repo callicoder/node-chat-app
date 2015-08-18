@@ -1,15 +1,17 @@
 'use strict';
 angular.module('chatApp')
 .controller('registerController', ['$scope', 'security', '$state', function($scope, security, $state){
+	if(security.currentUser) {
+		$state.go('home.chat');
+	}
 	$scope.user = {};
 
 	$scope.register = function() {
-		var passwordHash = CryptoJS.MD5($scope.user.password);		
+		var passwordHash = CryptoJS.MD5($scope.user.password).toString();		
 		$scope.user.password = passwordHash;
 		security.register($scope.user)
 		.success(function(data){
 			console.log(data);
-			Materialize.toast('Welcome to MtaerialAdmin ', 4000); 
 			$state.go('home.chat');
 		}).error(function(err){
 			console.log(err);

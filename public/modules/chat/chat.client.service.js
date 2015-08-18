@@ -2,13 +2,10 @@
 angular.module('chatApp')
 .factory('Socket', ['$timeout', 'security', '$state', function($timeout, security, $state){
 
-    console.log(security.currentUser);
-
 	if(security.currentUser) {
 		this.socket = io();
 	} else {
-        console.log(security.currentUser);
-		$state.go('login');
+        $state.go('welcome.login');
 	}
 
 	// Wrap the Socket.io 'on' method

@@ -24,8 +24,8 @@ var UserSchema = new Schema({
 	username: {
 		type: String,
 		trim: true,
-		default: '',
-		validate: [validateLocalStrategyProperty, 'Please fill in your username'],
+		unique: 'Username already exists',
+		required: 'Please fill in a username',
 	},
 	password: {
 		type: String,

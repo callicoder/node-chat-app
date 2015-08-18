@@ -9,7 +9,7 @@ angular.module('chatApp')
     $stateProvider
     .state('welcome', {
         abstract: true,
-        templateUrl: 'modules/common/welcome.client.view.html',        
+        templateUrl: 'modules/common/welcome.client.view.html'     
     })
     .state('welcome.login', {
         url: '/login',
@@ -40,7 +40,7 @@ angular.module('chatApp')
 
 
 angular.module('chatApp')
-.run(['$rootScope', 'security', '$state', function($rootScope, security, $state) {
+.run(['$rootScope', 'security', '$location', function($rootScope, security, $location) {
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
         if(toState.data && toState.data.contentClass) {
