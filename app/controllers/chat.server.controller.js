@@ -1,4 +1,5 @@
 'use strict';
+var _ = require('lodash');
 
 // Create the chat configuration
 module.exports = function(io, socket) {
@@ -7,9 +8,12 @@ module.exports = function(io, socket) {
         type: 'status',
         text: socket.request.user.username + ' joined the conversation.',
         created: Date.now(),
-        username: socket.request.user.username
+        username: socket.request.user.username,
     });
 
+    io.emit('analytics', {
+        numUsers: _.keys(io.sockets.connected).length
+    });
     // Send a chat messages to all connected sockets when a message is received 
     socket.on('chatMessage', function(message) {
         message.type = 'message';
@@ -26,7 +30,11 @@ module.exports = function(io, socket) {
             type: 'status',
             text: socket.request.user.username + ' left the conversation.',
             created: Date.now(),
-            username: socket.request.user.username
+            username: socket.request.user.username,
+        });
+
+        io.emit('analytics', {
+            numUsers: _.keys(io.sockets.connected).length
         });
     });
 };

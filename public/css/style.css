@@ -29,16 +29,6 @@ body {
 	padding-top: 65px;
 }
 
-#main, #footer {
-	padding-left: 250px; 
-}
-
-@media only screen and (max-width: 992px) { 
-	#main, #footer { 
-		padding-left: 0px; 
-	} 
-}
-
 .page-footer ul li{
 	clear: both;
 }
@@ -55,6 +45,10 @@ body {
 	left: 0.75rem;
 }
 
+.page-footer {
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
 
 .page-footer p {
 	font-size: 16px;
@@ -67,30 +61,6 @@ body {
 
 .top-nav {
 	height: 65px;
-}
-
-ul.side-nav.fixed { 
-	top: 64px; 
-}
-
-ul.side-nav.fixed li { 
-	line-height: 44px; 
-}
-
-ul.side-nav.fixed a { 
-	line-height: 44px; 
-	height: 44px; 
-	padding-right: 0px !Important;
-}
-
-ul.side-nav.fixed { 
-	overflow: hidden; 
-	outline: none; 
-	padding-bottom: 125px; 
-}
-
-ul.side-nav.fixed ul.collapsible-accordion { 
-	background-color: #FFF; 
 }
 
 .top-nav .nav-wrapper .page-title { 
@@ -109,18 +79,15 @@ ul.side-nav.fixed ul.collapsible-accordion {
 	display: inline-block; 
 }
 
-.nav-wrapper ul li a {
-	position: relative;
+.nav-wrapper ul li span {
+	font-size: 18px;
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
-.nav-wrapper ul li a span {
-	position: absolute;
-  	line-height: 12px;
-  	font-size: 12px;
-  	background-color: rgb(244, 67, 54);
-  	padding: 3px 6px;
-  	top: 8px;
-  	right: 6px;
+.nav-wrapper ul li a {
+	position: relative;
+	font-size: 18px;
 }
 
 .top-nav .header-container { 
@@ -128,138 +95,6 @@ ul.side-nav.fixed ul.collapsible-accordion {
 	padding-right: 25px; 
 }
 
-ul.side-nav.fixed li.logo { 
-	text-align: center; 
-	padding-top: 25px; 
-	margin-bottom: 16px; 
-	border-bottom: 1px solid #ddd; 
-}
-
-ul.side-nav.fixed li.logo:hover { 
-	background-color: transparent; 
-}
-
-ul.side-nav.fixed li.logo {
-  background-image: url(../images/profileBg.jpg);
-  max-width: 100%;
-  height: auto;
-  background-position: center;
-}
-
-#logo-container {
-	display: block;
-	text-align: left;
-	height: 100px;
-	line-height: 1.5;
-	padding: 0 15px;
-}
-
-#logo-container img {
-	max-height: 56px;
-}
-
-a.button-collapse.top-nav { 
-	position: absolute; 
-	text-align: center; 
-	height: 48px; 
-	width: 48px; 
-	left: 0; 
-	top: 0; 
-	float: none; 
-	margin-left: 1.5rem; 
-	color: #fff; 
-	font-size: 32px; 
-	z-index: 2; 
-}
-
-ul.side-nav.fixed ul.collapsible-accordion a.collapsible-header:after { 
-	speak: none; 
-	display: inline-block; 
-	font-family: "Material-Design-Icons"; 
-	font-style: normal; 
-	font-weight: normal; 
-	font-variant: normal; 
-	text-rendering: auto; 
-	content: "\e7c1"; 
-	float:right; 
-	font-size: 20px; 
-}
-
-ul.side-nav.fixed ul.collapsible-accordion a.collapsible-header.active:after { 
-	speak: none; 
-	display: inline-block; 
-	font-family: "Material-Design-Icons"; 
-	font-style: normal; 
-	font-weight: normal; 
-	font-variant: normal; 
-	text-rendering: auto; 
-	content: "\e7c4"; 
-	float:right; 
-	font-size: 20px; 
-}
-
-ul.side-nav.fixed li a span { 
-	font-size: 17px; 
-	margin-right: 9px; 
-}
-
-ul.side-nav.fixed .collapsible-body li a { 
-	margin: 0 1rem 0 2.8rem; 
-}
-
-.profile-menu {
-	max-height: 0;
-	overflow: hidden;
-	-webkit-transition: max-height 0.3s;
-	-moz-transition: max-height 0.3s;
-	transition: max-height 0.3s;
-}
-
-.profile-menu.open {
-	max-height: 200px;
-	border-bottom: 1px solid #D0D1CB;
-}
-
-.profile-menu:hover {
-	background-color: #fff !Important;
-}
-
-.profile-toggle a {
-	height: 38px !Important;
-	line-height: 38px !Important;
-	background-color: rgba(0, 0, 0, 0.37);
-	margin-left: -30px;
-	margin-right: -30px;
-	padding-left: 32px !Important;
-}
-
-.profile-toggle a:after {
-	speak: none; 
-	display: inline-block; 
-	font-family: "Material-Design-Icons"; 
-	font-style: normal; 
-	font-weight: normal; 
-	font-variant: normal; 
-	text-rendering: auto; 
-	float: right;
-	content: "\e8a3";	
-	padding-right: 15px;
-	font-size: 25px;
-}
-
-.profile-toggle a.open:after {
-	speak: none; 
-	display: inline-block; 
-	font-family: "Material-Design-Icons"; 
-	font-style: normal; 
-	font-weight: normal; 
-	font-variant: normal; 
-	text-rendering: auto; 
-	float: right;
-	content: "\e8a4";	
-	padding-right: 15px;
-	font-size: 25px;
-}
 
 /*
 	Common
@@ -315,4 +150,26 @@ body.login-content:before, body.register-content:before {
 	.card.login-content, .card.register-content {
 		padding: 15px;
 	}
+}
+
+#chat-form {
+	position: relative;
+}
+
+#chat-form .input-field {
+	margin-right: 50px;
+}
+
+#chat-form button {
+	width: 42px;
+	height: 42px;
+	line-height: 42px;
+	position: absolute;
+	right: 0;
+	bottom: 15px;
+}
+
+#chat-form button i {
+	line-height: 42px;
+	font-size: 1.2rem;
 }

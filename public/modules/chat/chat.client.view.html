@@ -7,10 +7,13 @@
       <div class="content">
           <div class="card">
               <div class="card-content">
-                  <span class="card-title grey-text text-darken-4">Chat with other users</span>
+                  <div class="card-header">
+                    <span class="card-title grey-text text-darken-4">Chat with other users</span>
+                    <span class="blue-text" style="float:right;margin-top: 15px;">Total active users: <b ng-bind="numUsers"></b></span>
+                  </div>
                   <ul id="chat" class="collection">
                       <li class="collection-item avatar" ng-repeat="message in messages track by $index">
-                          <i class="circle purple lighten-3" style="font-style:normal">{{message.username.slice(0,1) | uppercase}}</i>
+                          <i class="circle blue lighten-3" style="font-style:normal">{{message.username.slice(0,1) | uppercase}}</i>
                           <span class="title">{{message.username | uppercase}}</span>
                           <p>{{message.text}}</p>
                           <span style="float: right;">{{message.created | date: "dd-MM-yyyy 'at' h:mma"}}</span>
@@ -18,9 +21,10 @@
                       <li class="collection-item">
                           <form name="chat-form" id="chat-form" ng-submit="sendMessage()">
                               <div class="input-field">
-                                <input id="message" type="text" ng-model="messageText" autocomplete="off">
+                                <input id="message" type="text" ng-model="messageText" autocomplete="off" required>
                                 <label for="message">Message</label>
                               </div>
+                              <button class="btn btn-floating" type="submit"><i class="mdi-content-send"></i></button>
                           </form>
                       </li>
                   </ul>  

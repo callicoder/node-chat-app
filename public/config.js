@@ -4,9 +4,8 @@ angular.module('materialApp')
 .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 
     function($stateProvider, $urlRouterProvider, $locationProvider) {
 
-    $urlRouterProvider.otherwise('/login');
-    $urlRouterProvider.when('/home', '/home/chat');
-    
+    $urlRouterProvider.otherwise('/login');    
+
     $stateProvider
     .state('welcome', {
         abstract: true,
@@ -34,7 +33,7 @@ angular.module('materialApp')
         controller: 'homeController'
     })
     .state('home.chat', {
-        url: '/home/chat'
+        url: '/chat',
         templateUrl: 'modules/chat/chat.client.view.html',
         controller: 'chatController'
     });    
@@ -42,7 +41,7 @@ angular.module('materialApp')
 
 
 angular.module('materialApp')
-.run(['$rootScope', function($rootScope) {
+.run(['$rootScope', 'security', '$state', function($rootScope, security, $state) {
 
     $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
         if(toState.data && toState.data.contentClass) {
