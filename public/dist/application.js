@@ -2,8 +2,7 @@
 
 angular.module('materialApp', [
     'ui.router', 
-    'ngAnimate',
-    'ngFileUpload'
+    'ngAnimate'
 ]);
 
 'use strict';
@@ -18,10 +17,6 @@ angular.module('materialApp')
     .state('welcome', {
         abstract: true,
         templateUrl: 'modules/common/welcome.client.view.html',        
-    })
-    .state('welcome.branding', {
-        url: '/',
-        templateUrl: 'modules/common/branding.client.view.html',
     })
     .state('welcome.login', {
         url: '/login',
@@ -44,17 +39,10 @@ angular.module('materialApp')
         templateUrl: 'modules/home/home.client.view.html',
         controller: 'homeController'
     })
-    .state('home.files', {
-        url: '/files',
-        templateUrl: 'modules/files/files.client.view.html',
-        controller: 'filesController'
-    })
-    .state('home.listFiles', {
-        url: '/files/list',
-        templateUrl: 'modules/files/listFiles.client.view.html',
-        controller: 'listFilesController'
-    })
-    
+    .state('home.chat', {
+        templateUrl: 'modules/chat/chat.client.view.html',
+        controller: 'chatController'
+    });    
 }]);
 
 
@@ -73,9 +61,7 @@ angular.module('materialApp')
 'use strict';
 
 angular.module('materialApp')
-.controller('chatController', ['$scope', 'Socket', function($scope, Socket){
-	var socket = io();
-
+.controller('chatController', ['$scope', 'Socket', 'security', function($scope, Socket, security){
 	$scope.messages = [];
 
 	$scope.sendMessage = function() {
@@ -100,9 +86,12 @@ angular.module('materialApp')
 angular.module('materialApp')
 .factory('Socket', ['$timeout', 'security', '$state', function($timeout, security, $state){
 
+    console.log(security.currentUser);
+
 	if(security.currentUser) {
 		this.socket = io();
 	} else {
+        console.log(security.currentUser);
 		$state.go('login');
 	}
 
@@ -137,7 +126,7 @@ angular.module('materialApp')
 'use strict';
 angular.module('materialApp')
 .controller('headerController', ['$scope', 'security', function($scope, security){
-    $scope.user = security.currentUser.email;
+    $scope.user = security.currentUser.username;
 
 }])
 .directive('profileToggle', function(){
@@ -279,7 +268,7 @@ angular.module('materialApp')
 		security.login($scope.user)
 		.success(function(data){
 			console.log(data);
-			$state.go('home.files');
+			$state.go('home.chat');
 			Materialize.toast('Welcome to MtaerialAdmin ', 4000); 
 		}).error(function(err){
 			console.log(err);
@@ -298,7 +287,7 @@ angular.module('materialApp')
 		.success(function(data){
 			console.log(data);
 			Materialize.toast('Welcome to MtaerialAdmin ', 4000); 
-			$state.go('home.files');
+			$state.go('home.chat');
 		}).error(function(err){
 			console.log(err);
 			Materialize.toast('There was some error while registering: ' + err.message, 4000); 
