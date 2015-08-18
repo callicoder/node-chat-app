@@ -1,9 +1,6 @@
 'use strict';
 angular.module('chatApp')
 .controller('registerController', ['$scope', 'security', '$state', function($scope, security, $state){
-	if(security.currentUser) {
-		$state.go('home.chat');
-	}
 	$scope.user = {};
 
 	$scope.register = function() {

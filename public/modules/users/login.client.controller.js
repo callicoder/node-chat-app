@@ -2,10 +2,6 @@
 
 angular.module('chatApp')
 .controller('loginController', ['$scope', 'security', '$state', function($scope, security, $state){
-	if(security.currentUser) {
-		$state.go('home.chat');
-	}
-
 	$scope.user = {};
 
 	$scope.login = function() {

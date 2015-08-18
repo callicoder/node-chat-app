@@ -5,7 +5,7 @@ angular.module('chatApp')
 	if(security.currentUser) {
 		this.socket = io();
 	} else {
-        $state.go('welcome.login');
+        $state.go('login');
 	}
 
 	// Wrap the Socket.io 'on' method

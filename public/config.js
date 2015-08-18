@@ -7,11 +7,7 @@ angular.module('chatApp')
     $urlRouterProvider.otherwise('/login');    
 
     $stateProvider
-    .state('welcome', {
-        abstract: true,
-        templateUrl: 'modules/common/welcome.client.view.html'     
-    })
-    .state('welcome.login', {
+    .state('login', {
         url: '/login',
         templateUrl: 'modules/users/login.client.view.html',
         controller: 'loginController',
@@ -19,7 +15,7 @@ angular.module('chatApp')
             contentClass: 'login-content'
         }
     })
-    .state('welcome.register', {
+    .state('register', {
         url: '/register',
         templateUrl: 'modules/users/register.client.view.html',
         controller: 'registerController',

@@ -3,7 +3,7 @@
 angular.module('chatApp')
 .controller('chatController', ['$scope', 'Socket', 'security', '$state', function($scope, Socket, security, $state){
 	if(!security.currentUser) {
-		$state.go('welcome.login');
+		$state.go('login');
 	}
 
 	$scope.messages = [];
