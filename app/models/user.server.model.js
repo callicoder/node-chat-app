@@ -15,7 +15,7 @@ var validateUniqueUsername = function(value, callback) {
 		}
 		callback(!count);
 	});
-}
+};
 
 /**
  * A Validation function for local strategy properties
