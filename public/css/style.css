@@ -173,3 +173,26 @@ body.login-content:before, body.register-content:before {
 	line-height: 42px;
 	font-size: 1.2rem;
 }
+
+.chat-card .analytics {
+	float:right;
+	margin-top: 15px;
+	font-size:18px;
+}
+
+.chat-card .collection-item .datetime {
+	float: right;
+}
+
+@media(max-width: 600px) {
+	.chat-card .analytics {
+		float: none;
+		display: block;
+		margin-top: 0;
+	}
+	.chat-card .collection-item .datetime {
+		float: none;
+	}
+
+
+}

@@ -38,7 +38,7 @@ angular.module('chatApp')
 angular.module('chatApp')
 .run(['$rootScope', 'security', '$location', function($rootScope, security, $location) {
 
-    $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams) {
         if(toState.data && toState.data.contentClass) {
             $rootScope.contentClass = toState.data.contentClass;
         } else {

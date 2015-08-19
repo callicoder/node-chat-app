@@ -5,18 +5,18 @@
             
       </div>
       <div class="content">
-          <div class="card">
+          <div class="card chat-card">
               <div class="card-content">
                   <div class="card-header">
                     <span class="card-title grey-text text-darken-4">Chat with other users</span>
-                    <span class="blue-text" style="float:right;margin-top: 15px;font-size:18px;">Total active users: <b ng-bind="numUsers"></b></span>
+                    <span class="blue-text analytics">Total active users: <b ng-bind="numUsers"></b></span>
                   </div>
                   <ul id="chat" class="collection">
                       <li class="collection-item avatar" ng-repeat="message in messages track by $index">
                           <i class="circle blue lighten-3" style="font-style:normal">{{message.username.slice(0,1) | uppercase}}</i>
                           <span class="title">{{message.username | uppercase}}</span>
                           <p>{{message.text}}</p>
-                          <span style="float: right;">{{message.created | date: "dd-MM-yyyy 'at' h:mma"}}</span>
+                          <span class="datetime">{{message.created | date: "dd-MM-yyyy 'at' h:mma"}}</span>
                       </li>
                       <li class="collection-item">
                           <form name="chat-form" id="chat-form" ng-submit="sendMessage()">
