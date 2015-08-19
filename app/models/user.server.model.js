@@ -5,6 +5,18 @@ var mongoose = require('mongoose'),
 	crypto = require('crypto');
 
 
+var validateUniqueUsername = function(value, callback) {
+	var User = mongoose.model('User');
+	User.count({
+		username: value
+	}, function(err, count) {
+		if(err) {
+			return callback(err);
+		}
+		callback(!count);
+	});
+}
+
 /**
  * A Validation function for local strategy properties
  */
@@ -24,8 +36,9 @@ var UserSchema = new Schema({
 	username: {
 		type: String,
 		trim: true,
-		unique: 'Username already exists',
+		unique: true,
 		required: 'Please fill in a username',
+		validate: [validateUniqueUsername, 'Username already exists.']
 	},
 	password: {
 		type: String,
