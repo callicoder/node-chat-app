@@ -45,6 +45,7 @@ module.exports = function(db) {
     app.locals.keywords = config.app.keywords;
     app.locals.jsFiles = config.getJavaScriptAssets();
     app.locals.cssFiles = config.getCSSAssets();
+    app.locals.socketCount = 0;
 
     // Should be placed before express.static
     app.use(compression({
@@ -126,7 +127,7 @@ module.exports = function(db) {
     });
 
     // Load the Socket.io configuration
-    require('./socketio')(server, io, mongoStore);
+    require('./socketio')(server, io, mongoStore, app);
 
     // Return Express server instance
     return server;

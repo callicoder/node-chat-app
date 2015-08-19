@@ -7,7 +7,7 @@ var config = require('./config'),
     passport = require('passport');
 
 // Define the Socket.io configuration method
-module.exports = function(server, io, mongoStore) {
+module.exports = function(server, io, mongoStore, app) {
 	// Intercept Socket.io's handshake request
     io.use(function(socket, next) {
     	// Use the 'cookie-parser' module to parse the request cookies
@@ -37,6 +37,6 @@ module.exports = function(server, io, mongoStore) {
 	// Add an event listener to the 'connection' event
     io.on('connection', function(socket) {
     	// Load the chat controller
-        require('../app/controllers/chat.server.controller')(io, socket);
+        require('../app/controllers/chat.server.controller')(io, socket, app);
     });
 };

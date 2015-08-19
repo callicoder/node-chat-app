@@ -2,17 +2,20 @@
 var _ = require('lodash');
 
 // Create the chat configuration
-module.exports = function(io, socket) {
+module.exports = function(io, socket, app) {
 	// Emit the status event when a new socket client is connected
+
     io.emit('chatMessage', {
         type: 'status',
         text: socket.request.user.username + ' joined the conversation.',
         created: Date.now(),
         username: socket.request.user.username,
     });
+
+    console.log(app.locals.socketCount);
  
     io.emit('analytics', {
-        numUsers: _.keys(io.sockets.connected).length
+        numUsers: ++app.locals.socketCount
     });
     // Send a chat messages to all connected sockets when a message is received 
     socket.on('chatMessage', function(message) {
@@ -34,7 +37,7 @@ module.exports = function(io, socket) {
         });
 
         io.emit('analytics', {
-            numUsers: _.keys(io.sockets.connected).length
+            numUsers: --app.locals.socketCount
         });
     });
 };
